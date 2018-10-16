@@ -1,0 +1,48 @@
+name:                mornington-crescent
+version:             0.1.0.0
+github:              "fangyi-zhou/mornington-crescent"
+license:             MIT
+author:              "Fangyi Zhou"
+maintainer:          "fangyi.zhou@yuriko.moe"
+copyright:           "2018 Fangyi Zhou"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/fangyi-zhou/mornington-crescent#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+
+executables:
+  mornington-crescent-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - mornington-crescent
+
+tests:
+  mornington-crescent-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - mornington-crescent
