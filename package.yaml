@@ -21,6 +21,10 @@ description:         Please see the README on GitHub at <https://github.com/fang
 
 dependencies:
 - base >= 4.7 && < 5
+- containers
+- mtl
+- parsec
+- MissingH
 
 library:
   source-dirs: src
