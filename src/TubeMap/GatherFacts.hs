@@ -27,7 +27,7 @@ updateFact entry = do
   where
     updateTubeMap :: TubeMapEntry -> TubeMap -> TubeMap
     updateTubeMap (newStation, stationLines) tubeMap
-      = foldl (\map line -> (M.alter updateLine line map)) tubeMap stationLines
+      = foldl (flip (M.alter updateLine)) tubeMap stationLines
       where
         updateLine (Just s) = Just $ S.insert newStation s
         updateLine Nothing  = Just $ S.singleton newStation
@@ -75,5 +75,5 @@ loadFactsFromFile :: FilePath -> IO ()
 loadFactsFromFile path = do
   contents <- readFile path
   case parseFacts contents path of
-    Left err      -> putStrLn $ show err
+    Left err      -> print err
     Right tubemap -> putStrLn $ showFacts tubemap
